@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20150413055016) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
