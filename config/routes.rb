@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'nearby/hotel'
+  get 'nearby/shopping_malls'
+  get 'nearby/movie_theaters'
+  get 'nearby/parks'
+  get 'nearby/hospitals'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   
   root 'home#index'

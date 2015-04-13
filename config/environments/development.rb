@@ -40,4 +40,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  class ActionDispatch::Request
+    def ip
+      "192.168.0.125"
+    end
+  end
 end
