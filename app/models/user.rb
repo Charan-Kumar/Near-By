@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
-  validates_uniqueness_of :email
-
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
@@ -25,5 +23,21 @@ class User < ActiveRecord::Base
         )
       end
     end
+  end
+
+  def self.find_for_facebook(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.save!
+    end
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
   end
 end
