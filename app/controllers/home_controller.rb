@@ -6,8 +6,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-
-    
-    
+    @latitude = 17.412361
+    @longitude  = 78.413337
   end
 end

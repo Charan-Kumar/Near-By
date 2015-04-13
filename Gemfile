@@ -49,10 +49,13 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
 
 gem 'pry'
-
-#Twitter BootStrap
-gem 'therubyracer'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem 'twitter-bootstrap-rails'
-
 gem 'google_places'
+gem 'gmaps4rails'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
+
+group :assets do
+  gem "twitter-bootstrap-rails"
+  gem 'less'
+end
