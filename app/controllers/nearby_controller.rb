@@ -4,7 +4,6 @@ class NearbyController < ApplicationController
   def hotel
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
     @hotels = @client.spots(17.412361, 78.413337, :types => 'restaurant')
-    
   end
 
   def shopping_malls
