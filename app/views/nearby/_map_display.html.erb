@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map_markers'}}, function(){
+    markers = handler.addMarkers(<%=raw hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    
+  });
+  });
+</script>
+
+<div id="map_markers" style='width: 1000px; height: 400px;'></div>
