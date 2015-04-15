@@ -7,6 +7,8 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @ip = request.ip
+    binding.pry
     @latitude = 17.412361
     @longitude  = 78.413337
   end
