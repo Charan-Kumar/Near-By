@@ -1,5 +1,9 @@
 class NearbyController < ApplicationController
 
+  ip = request.ip
+  location =  Geokit::Geocoders::MultiGeocoder.geocode(ip)
+  lat = location.lat
+  lng = location.lng
  
   def hotel
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
