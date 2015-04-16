@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @ip = request.remote_ip
-    @location =  Geokit::Geocoders::MultiGeocoder.geocode(ip)
+    @location =  Geokit::Geocoders::MultiGeocoder.geocode(@ip)
     @latitude = location.lat
     @longitude  = location.lng
   end
