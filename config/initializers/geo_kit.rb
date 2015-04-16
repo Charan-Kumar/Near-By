@@ -11,19 +11,18 @@
     # These setting can be nil if not needed, otherwise, a valid URI must be
     # filled in at a minimum.  If the proxy requires authentication, the username
     # and password can be provided as well.
-    Geokit::Geocoders::proxy = 'https://user:password@host:port'
+    Geokit::Geocoders::proxy = nil
 
     # This is your yahoo application key for the Yahoo Geocoder.
     # See http://developer.yahoo.com/faq/index.html#appid
     # and http://developer.yahoo.com/maps/rest/V1/geocode.html
-    Geokit::Geocoders::YahooGeocoder.key = 'REPLACE_WITH_YOUR_YAHOO_KEY'
-    Geokit::Geocoders::YahooGeocoder.secret = 'REPLACE_WITH_YOUR_YAHOO_SECRET'
+    
 
     # This is your Google Maps geocoder keys (all optional).
     # See http://www.google.com/apis/maps/signup.html
     # and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
-    Geokit::Geocoders::GoogleGeocoder.client_id = ''
-    Geokit::Geocoders::GoogleGeocoder.cryptographic_key = ''
+    Geokit::Geocoders::GoogleGeocoder.client_id = '1011737962375-0nukrrmvafsfiroe3sl9i1d1rjtcq12k.apps.googleusercontent.com'
+    Geokit::Geocoders::GoogleGeocoder.cryptographic_key = 'UyYUiv_aFyGKvbb1m5U2C-2L'
     Geokit::Geocoders::GoogleGeocoder.channel = ''
 
     # You can also use the free API key instead of signed requests
@@ -41,7 +40,7 @@
     # usage tied to an account, the value should be set to username:password.
     # See http://geocoder.us
     # and http://geocoder.us/user/signup
-    Geokit::Geocoders::UsGeocoder.key = 'username:password'
+    Geokit::Geocoders::UsGeocoder.key = nil
 
     # This is your authorization key for geocoder.ca.
     # To use the free service, the value can be set to nil or false.  For
@@ -49,20 +48,14 @@
     # Geocoder.ca.
     # See http://geocoder.ca
     # and http://geocoder.ca/?register=1
-    Geokit::Geocoders::CaGeocoder.key = 'KEY'
+    Geokit::Geocoders::CaGeocoder.key = nil
 
     # This is your username key for geonames.
     # To use this service either free or premium, you must register a key.
     # See http://www.geonames.org
-    Geokit::Geocoders::GeonamesGeocoder.key = 'KEY'
+   
 
-    # Most other geocoders need either no setup or a key
-    Geokit::Geocoders::BingGeocoder.key = ''
-    Geokit::Geocoders::MapQuestGeocoder.key = ''
-    Geokit::Geocoders::YandexGeocoder.key = ''
-    Geokit::Geocoders::MapboxGeocoder.key = 'ACCESS_TOKEN'
-    Geokit::Geocoders::OpencageGeocoder.key = 'some_api_key'
-
+    
     # Geonames has a free service and a premium service, each using a different URL
     # GeonamesGeocoder.premium = true will use http://ws.geonames.net (premium)
     # GeonamesGeocoder.premium = false will use http://api.geonames.org (free)
