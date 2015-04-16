@@ -1,13 +1,10 @@
 class NearbyController < ApplicationController
 
-  
-  # @ip = request.remote_ip
-  @location =  Geokit::Geocoders::MultiGeocoder.geocode('183.82.99.106')
-  @latitude = @location.lat
-  @longitude = @location.lng
   def hotel
+    location = get_ip()
+    binding.pry
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
-    @hotels = @client.spots(@latitude, @longitude, :types => 'restaurant')
+    @hotels = @client.spots(location.lat, location.lng, :types => 'restaurant')
     @hash = Gmaps4rails.build_markers(@hotels) do |loc, marker|
       marker.lat loc.lat
       marker.lng loc.lng
@@ -16,7 +13,7 @@ class NearbyController < ApplicationController
 
   def shopping_malls
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
-    @sh = @client.spots(@latitude, @longitude, :types => 'shopping_mall')
+    @sh = @client.spots(location.lat, location.lng, :types => 'shopping_mall')
     @hash = Gmaps4rails.build_markers(@sh) do |loc, marker|
       marker.lat loc.lat
       marker.lng loc.lng
@@ -25,7 +22,7 @@ class NearbyController < ApplicationController
 
   def parks
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
-    @parks = @client.spots(@latitude, @longitude, :types => 'park')
+    @parks = @client.spots(location.lat, location.lng, :types => 'park')
     @hash = Gmaps4rails.build_markers(@parks) do |loc, marker|
       marker.lat loc.lat
       marker.lng loc.lng
@@ -34,7 +31,7 @@ class NearbyController < ApplicationController
 
   def movie_theaters
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
-    @mts = @client.spots(@latitude, @longitude, :types => 'movie_theater')
+    @mts = @client.spots(location.lat, location.lng, :types => 'movie_theater')
 
     @hash = Gmaps4rails.build_markers(@mts) do |loc, marker|
       marker.lat loc.lat
@@ -45,11 +42,17 @@ class NearbyController < ApplicationController
 
   def hospitals
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
-    @hospitals = @client.spots(@latitude, @longitude, :types => 'hospital')
+    @hospitals = @client.spots(location.lat, location.lng, :types => 'hospital')
     @hash = Gmaps4rails.build_markers(@hospitals) do |loc, marker|
       marker.lat loc.lat
       marker.lng loc.lng
     end
+  end
+
+  def get_ip
+     ip = request.remote_ip
+     location =  Geokit::Geocoders::MultiGeocoder.geocode(ip.to_s)
+     return location 
   end
 
 end
