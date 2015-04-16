@@ -11,6 +11,5 @@ class HomeController < ApplicationController
     @location =  Geokit::Geocoders::MultiGeocoder.geocode(@ip.to_s)
     @latitude = @location.lat
     @longitude  = @location.lng
-    binding.pry
   end
 end

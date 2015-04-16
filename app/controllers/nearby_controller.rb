@@ -6,7 +6,6 @@ class NearbyController < ApplicationController
   @latitude = @location.lat
   @longitude = @location.lng
   def hotel
-
     @client = GooglePlaces::Client.new('AIzaSyB5inJaWD_E8Cn46Go123YzjQUPtZd7OJw')
     @hotels = @client.spots(@latitude, @longitude, :types => 'restaurant')
     @hash = Gmaps4rails.build_markers(@hotels) do |loc, marker|
