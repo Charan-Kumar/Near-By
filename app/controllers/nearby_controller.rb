@@ -1,6 +1,6 @@
 class NearbyController < ApplicationController
 
-  @ip = request.ip
+  @ip = request.remote_ip
   @location =  Geokit::Geocoders::MultiGeocoder.geocode(@ip)
   lat = @location.lat
   lng = @location.lng
